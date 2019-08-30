@@ -12,22 +12,35 @@ export default class Button extends Component {
         this.props.onClick && this.props.onClick('Button');
     }
 
-    generateSubmit() {
-        return(
-            <input
-                type={this.props.type}
-                value={this.props.buttonText}
-                className={`${Style.btn} ${this.props.classNames}`}
-                disabled={this.props.disabled || false}
-            />
-        )
+    getButtonClassNames() {
+        const { buttonType } = this.props;
+        console.log(buttonType);
+        let btnClassNames = '';
+        switch (buttonType) {
+            case 'submit':
+                btnClassNames = `${Style.btn} ${Style.btnSubmit}`;
+                break;
+            case 'delete':
+                btnClassNames = `${Style.btn} ${Style.btnDelete}`;
+                break;
+            case 'update':
+                btnClassNames = `${Style.btn} ${Style.btnUpdate}`;
+                break;
+            case 'cancel':
+                btnClassNames = `${Style.btn} ${Style.btnCancel}`;
+                break;
+            default:
+                btnClassNames = `${Style.btn}`;
+            }
+        console.log(btnClassNames);
+        return btnClassNames;
     }
 
     generateButton() {
         return (
             <button
-                type={this.props.type || "button"}
-                className={`${Style.btn} ${this.props.classNames}`}
+                type="button"
+                className={this.getButtonClassNames()}
                 onClick={this.handleClick}
                 disabled={this.props.disabled || false}
             >
@@ -39,14 +52,13 @@ export default class Button extends Component {
 
     render() {
         return (
-                this.props.type === 'submit' ? this.generateSubmit() : this.generateButton()
+                this.generateButton()
         )
     }
 }
 
 Button.propTypes = {
-    classNames: PropTypes.string,
-    type: PropTypes.string,
+    buttonType: PropTypes.string,
     buttonText: PropTypes.string.isRequired,
     buttonSpan: PropTypes.string,
     onClick: PropTypes.func,

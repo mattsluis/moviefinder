@@ -39,7 +39,7 @@ class SearchBox extends Component {
         const searchBtnProps = {
             buttonText: "Search Movies",
             onClick: this.handleSearch,
-            classNames: 'searchBtn',
+            buttonType: 'submit',
         };
 
         return (

@@ -14,7 +14,7 @@ app.use(express.static('build'));
 
 // API Routes
 app.use('/api/movies', require('./routes/movie-routes'));
-
+//Root Route
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'))
 });

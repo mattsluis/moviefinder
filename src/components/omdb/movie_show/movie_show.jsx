@@ -19,7 +19,7 @@ export default class MovieShow extends Component {
         const { data } = this.props;
         const backButtonProps = {
             buttonText: 'Go Back',
-            classNames: '',
+            buttonType: '',
         }
         console.log(data)
         return (

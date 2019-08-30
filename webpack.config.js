@@ -1,13 +1,9 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-// Handles css files
 const ExtractTextPlugin  = require('extract-text-webpack-plugin');
-// Spits out an index.html file in the build
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-// Configure webpack
 const config = {
-  // Entry point will be in the src folder, file will be named index.js
   entry: './src/index.js',
   // Send the files to the build folder, create one if it isn't present
   watch:true, //watch for file changes
@@ -18,7 +14,6 @@ const config = {
   module: {
     rules: [
       {
-        // For .js or .jsx files use babel-loader. Exclude node modules
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -28,12 +23,8 @@ const config = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // Creates `style` nodes from JS strings
           'style-loader',
-
-          // Translates CSS into CommonJS
           { loader: 'css-loader', options: { modules: true, sourceMap: true } },
-          // Compiles Sass to CSS
           { loader: 'sass-loader', options: { sourceMap: true } }
         ],
       },
