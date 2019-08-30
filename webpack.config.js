@@ -1,7 +1,5 @@
-// webpack.config.js
-
-// Import dependencies
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 // Handles css files
 const ExtractTextPlugin  = require('extract-text-webpack-plugin');
 // Spits out an index.html file in the build
@@ -21,21 +19,24 @@ const config = {
     rules: [
       {
         // For .js or .jsx files use babel-loader. Exclude node modules
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
         }
       },
       {
-        // for .css files use css-loader. If that doesn't work use style-loader
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract(
-          {
-            fallback: 'style-loader',
-            use: 'css-loader'
-          })
-      }
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+
+          // Translates CSS into CommonJS
+          { loader: 'css-loader', options: { modules: true, sourceMap: true } },
+          // Compiles Sass to CSS
+          { loader: 'sass-loader', options: { sourceMap: true } }
+        ],
+      },
     ]
   },
   plugins: [
@@ -45,7 +46,8 @@ const config = {
       filename: "./index.html"
     }),
     // Name the css file sent to the build folder style.css
-    new ExtractTextPlugin({filename: 'style.css'})
+    new ExtractTextPlugin({filename: 'style.css'}),
+    new Dotenv()
   ]
 };
 

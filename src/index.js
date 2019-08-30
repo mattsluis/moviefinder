@@ -1,14 +1,16 @@
-// src/index.js
-
-// Import react and react-dom
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from 'components/containers/app/app.jsx';
 
-// Import the App.js component, give react something to render
-import App from './App';
+import { Provider } from 'react-redux';
 
-// Import the css file
-import './index.scss';
+import store from 'store.js';
 
-// Attach the App component to the div with the id "root" in our index.html file
-ReactDOM.render(<App />, document.getElementById('root'));
+document.addEventListener('DOMContentLoaded', () => {
+    ReactDOM.render(
+        <Provider store = {store}>
+            <App/>
+        </Provider>,
+        document.getElementById('root'),
+    )
+});
