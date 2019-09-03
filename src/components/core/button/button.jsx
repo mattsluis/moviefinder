@@ -14,7 +14,6 @@ export default class Button extends Component {
 
     getButtonClassNames() {
         const { buttonType } = this.props;
-        console.log(buttonType);
         let btnClassNames = '';
         switch (buttonType) {
             case 'submit':
@@ -32,7 +31,6 @@ export default class Button extends Component {
             default:
                 btnClassNames = `${Style.btn}`;
             }
-        console.log(btnClassNames);
         return btnClassNames;
     }
 

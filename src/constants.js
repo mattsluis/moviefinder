@@ -6,3 +6,4 @@ export const START_SEARCH = 'START_SEARCH';
 export const SET_MOVIES = 'SET_MOVIES';
 export const START_SET_DETAILS = 'START_SET_DETAILS';
 export const SET_DETAILS = 'SET_DETAILS';
+export const SET_ROTTEN = 'SET_ROTTEN';

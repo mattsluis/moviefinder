@@ -1,9 +1,10 @@
-import {START_SEARCH, SET_MOVIES, START_SET_DETAILS, SET_DETAILS } from 'constants';
+import {START_SEARCH, SET_MOVIES, START_SET_DETAILS, SET_DETAILS, SET_ROTTEN } from 'constants';
 
 const initialState = {
     query: '',
     results: [],
     details: {},
+    rotten: '',
     isLoading: true,
 }
 
@@ -29,6 +30,12 @@ const movieReducer = (state = initialState, action) => {
             return {
                 ...state,
                 details: action.payload,
+                isLoading: false,
+            };
+        case 'SET_ROTTEN':
+            return {
+                ...state,
+                rotten: action.payload,
                 isLoading: false,
             };
         default:

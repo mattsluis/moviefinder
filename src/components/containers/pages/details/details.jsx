@@ -19,9 +19,9 @@ class Details extends Component {
 
     }
     renderData() {
-        const { details } = this.props;
+        const { details, rotten } = this.props;
         return (
-            <MovieShow data={details}/>
+            <MovieShow movie={details} rotten={rotten}/>
         )
     }
 
@@ -37,6 +37,7 @@ class Details extends Component {
 const mapStateToProps = state => {
     return {
         details: state.movieReducer.details,
+        rotten: state.movieReducer.rotten
     }
 };
 

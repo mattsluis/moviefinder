@@ -11,25 +11,23 @@ export default class MovieShow extends Component {
         super(props);
         this.state = {};
     }
-    goBack(){
-        this.props.history.goBack();
-    }
 
     render() {
-        const { data } = this.props;
+        const { movie, rotten } = this.props;
+        console.log(movie);
         const backButtonProps = {
             buttonText: 'Go Back',
-            buttonType: '',
         }
-        console.log(data)
+
         return (
             <div className={Style.movieContainer}>
-                <h1 className={Style.movieHeader}>{data.Title}</h1>
-                <span className={Style.stars}>Starring: {data.Actors}</span>
-                <p className={Style.plot}>{data.Plot}</p>
-                <Link to='/'>
-                    <Button {...backButtonProps}/>
-                </Link>
+                <h1 className={Style.movieHeader}>{movie.Title} <span className={Style.year}>{movie.Year}</span></h1>
+                <span>Tomatometer: {rotten} </span><span>Runtime: {movie.Runtime} </span>
+                <img src={movie.Poster} />
+                <p className={Style.stars}>Starring: {movie.Actors}</p>
+
+                <p className={Style.plot}>{movie.Plot}</p>
+                <Link to='/'><Button {...backButtonProps}/></Link>
             </div>
         )
     }

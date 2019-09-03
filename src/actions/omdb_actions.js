@@ -1,6 +1,7 @@
 import {
     QUERY_URL, DETAILS_URL,
-    START_SEARCH, SET_MOVIES, START_SET_DETAILS, SET_DETAILS }
+    START_SEARCH, SET_MOVIES,
+    START_SET_DETAILS, SET_DETAILS, SET_ROTTEN }
 from 'constants';
 
 import axios from 'axios';
@@ -28,6 +29,10 @@ export const getDetails = movieId => dispatch => {
             dispatch({
                 type: SET_DETAILS,
                 payload: response.data,
+            })
+            dispatch({
+                type: SET_ROTTEN,
+                payload: response.data.Ratings[1].Value,
             })
         })
         .catch(err => console.log(err));
