@@ -1,9 +1,15 @@
 .movieContainer {
     text-align: center;
-    .movieHeader {
-        .year {
-            font-size: 12px;
+    .header {
+        .title {
+
         }
+        .year {
+
+        }
+    }
+    .poster {
+
     }
     .stars {
 
@@ -13,5 +19,4 @@
         margin-left: 10px;
         margin-right: 10px;
     }
-
 }

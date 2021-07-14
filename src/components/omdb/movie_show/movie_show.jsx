@@ -21,11 +21,14 @@ export default class MovieShow extends Component {
 
         return (
             <div className={Style.movieContainer}>
-                <h1 className={Style.movieHeader}>{movie.Title} <span className={Style.year}>{movie.Year}</span></h1>
-                <span>Tomatometer: {rotten} </span><span>Runtime: {movie.Runtime} </span>
-                <img src={movie.Poster} />
+                <div className={Style.header}>
+                    <h1 className={Style.title}>{movie.Title}</h1>
+                    <p className={Style.year}>{movie.Year}</p>
+                    <span>Tomatometer: {rotten} </span>
+                    <span>Runtime: {movie.Runtime} </span>
+                </div>
+                <div className={Style.poster}><img src={movie.Poster} /></div>
                 <p className={Style.stars}>Starring: {movie.Actors}</p>
-
                 <p className={Style.plot}>{movie.Plot}</p>
                 <Link to='/'><Button {...backButtonProps}/></Link>
             </div>

@@ -1,17 +1,12 @@
-// server.js
-
 const express = require('express');
 const app = express();
 
-// Set the port
 const PORT = process.env.PORT || 3000;
 
-// Import Path
 const path = require('path');
 
 // Static files
 app.use(express.static('build'));
-
 // API Routes
 app.use('/api/movies', require('./routes/movie-routes'));
 //Root Route
